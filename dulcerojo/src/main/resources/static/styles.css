@@ -1,0 +1,44 @@
+:root {
+    --brand-dark: #55353a;
+    --brand-light: #f7e9e9;
+    --brand-mid: #bb9ea1;
+    --brand-gray: #988484;
+}
+
+body {
+    background-color: var(--brand-light);
+}
+
+.navbar {
+    background-color: var(--brand-dark) !important;
+}
+
+.btn-brand {
+    background-color: var(--brand-dark);
+    color: white;
+    border: none;
+}
+
+.btn-brand:hover {
+    background-color: var(--brand-mid);
+    color: white;
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+}
+
+.card-hover {
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 .5rem 1rem rgba(85, 53, 58, 0.15) !important;
+}
+
+.precio {
+    color: var(--brand-dark);
+    font-weight: bold;
+}
