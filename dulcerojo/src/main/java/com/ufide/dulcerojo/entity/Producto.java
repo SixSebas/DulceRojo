@@ -26,9 +26,10 @@ public class Producto {
     @PositiveOrZero
     private int stock;
 
-    @Size(max = 50)
-    @Column(length = 50)
-    private String categoria;
+    @NotNull(message = "Debe seleccionar una categoría")
+    @ManyToOne
+    @JoinColumn(name = "categoria_id", nullable = false)
+    private Categoria categoria;
 
     @Column(length = 255)
     private String imagen;
@@ -36,7 +37,7 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(String nombre, String descripcion, double precio, int stock, String categoria) {
+    public Producto(String nombre, String descripcion, double precio, int stock, Categoria categoria) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
@@ -92,11 +93,11 @@ public class Producto {
         this.stock = stock;
     }
 
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 

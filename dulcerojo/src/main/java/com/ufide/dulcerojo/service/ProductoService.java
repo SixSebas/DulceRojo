@@ -23,8 +23,8 @@ public class ProductoService {
         return repo.findById(id);
     }
 
-    public Producto guardar(Producto p) {
-        return repo.save(p);
+    public Producto guardar(Producto producto) {
+        return repo.save(producto);
     }
 
     public void eliminar(Long id) {
@@ -32,7 +32,7 @@ public class ProductoService {
     }
 
     public List<Producto> buscarPorCategoria(String categoria) {
-        return repo.findByCategoria(categoria);
+        return repo.findByCategoriaNombre(categoria);
     }
 
     public List<Producto> buscarPorNombre(String texto) {
