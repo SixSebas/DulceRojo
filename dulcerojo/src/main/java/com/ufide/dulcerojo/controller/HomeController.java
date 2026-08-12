@@ -10,4 +10,10 @@ public class HomeController {
     public String home() {
         return "home";
     }
+
+    @GetMapping("/403")
+    public String accesoDenegado() {
+        return "403";
+    }
+
 }

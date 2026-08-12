@@ -3,6 +3,7 @@ package com.ufide.dulcerojo.controller;
 import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,51 +32,45 @@ public class ProductoController {
 
     @GetMapping("/{id}")
     public String detalle(@PathVariable Long id, Model model) {
-        model.addAttribute(
-                "producto",
-                service.buscarPorId(id).orElse(null));
-
+        model.addAttribute("producto", service.buscarPorId(id).orElse(null));
         return "producto";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/nuevo")
     public String nuevo(Model model) {
         model.addAttribute("producto", new Producto());
         model.addAttribute("categorias", categoriaService.listar());
-
         return "productos/form";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public String guardar(
             @Valid @ModelAttribute("producto") Producto producto,
             BindingResult result,
             Model model,
             RedirectAttributes ra) {
-
         if (result.hasErrors()) {
             model.addAttribute("categorias", categoriaService.listar());
             return "productos/form";
         }
-
         service.guardar(producto);
         ra.addFlashAttribute("ok", "Producto guardado correctamente");
-
         return "redirect:/productos";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/{id}/editar")
     public String editar(@PathVariable Long id, Model model) {
-
         Producto producto = service.buscarPorId(id)
                 .orElseThrow(() -> new IllegalArgumentException("Producto no encontrado"));
-
         model.addAttribute("producto", producto);
         model.addAttribute("categorias", categoriaService.listar());
-
         return "productos/form";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/{id}")
     public String actualizar(
             @PathVariable Long id,
@@ -83,29 +78,23 @@ public class ProductoController {
             BindingResult result,
             Model model,
             RedirectAttributes ra) {
-
         if (result.hasErrors()) {
             model.addAttribute("categorias", categoriaService.listar());
             return "productos/form";
         }
-
         producto.setId(id);
         service.guardar(producto);
-
         ra.addFlashAttribute("ok", "Producto actualizado correctamente");
-
         return "redirect:/productos";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/{id}/eliminar")
     public String eliminar(
             @PathVariable Long id,
             RedirectAttributes ra) {
-
         service.eliminar(id);
-
         ra.addFlashAttribute("ok", "Producto eliminado correctamente");
-
         return "redirect:/productos";
     }
 }
