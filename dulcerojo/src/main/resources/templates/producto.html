@@ -72,7 +72,8 @@
                     </a>
                     <a class="btn btn-outline-secondary" th:href="@{/productos/{id}/editar(id=${producto.id})}"
                         sec:authorize="hasRole('ADMIN')">
-                        <i class="bi bi-pencil me-1"></i> Editar
+                        <i class="bi bi-pencil me-1"></i>
+                        <span th:text="#{productos.editar}">Editar</span>
                     </a>
                 </div>
             </div>

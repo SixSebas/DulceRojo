@@ -17,13 +17,14 @@
     <main class="container py-5">
         <div class="text-center mb-5">
             <h1 class="display-5 fw-bold" style="color: #55353a;">
-                🍪 Bienvenido a Dulce Rojo
+                🍪 <span th:text="#{home.titulo}">Bienvenido a Dulce Rojo</span>
             </h1>
-            <p class="lead text-muted">
+            <p class="lead text-muted" th:text="#{home.subtitulo}">
                 Galletas artesanales estilo New York, horneadas con amor.
             </p>
             <a th:href="@{/productos}" class="btn btn-brand btn-lg">
-                <i class="bi bi-grid me-2"></i>Ver catálogo
+                <i class="bi bi-grid me-2"></i>
+                <span th:text="#{home.ver-catalogo}">Ver catálogo</span>
             </a>
         </div>
 
