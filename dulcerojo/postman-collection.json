@@ -1,0 +1,168 @@
+{
+  "info": {
+    "name": "DulceRojo - SC-403",
+    "_postman_id": "dulcerojo-api-collection",
+    "description": "Coleccion de peticiones para probar el sistema DulceRojo.\n\nIncluye:\n- Endpoints de Productos (CRUD completo)\n- API REST en JSON\n- Variables: usar {{base_url}} para cambiar de localhost al server desplegado\n\nImportar desde Postman:\nFile -> Import -> seleccionar este .json",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Home",
+      "item": [
+        {
+          "name": "GET / (inicio)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/",
+              "host": ["{{base_url}}"],
+              "path": [""]
+            },
+            "description": "Pagina de inicio de DulceRojo."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "API REST (JSON)",
+      "description": "Endpoints /api/productos - @RestController, JSON, ResponseEntity.",
+      "item": [
+        {
+          "name": "GET /api/productos (listar - JSON)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/productos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "productos"]
+            },
+            "description": "Lista todos los productos en JSON."
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/productos/1 (detalle - JSON)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/productos/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "productos", "1"]
+            },
+            "description": "200 OK con el producto, o 404 si no existe."
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/productos/999 (404 JSON)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/productos/999",
+              "host": ["{{base_url}}"],
+              "path": ["api", "productos", "999"]
+            },
+            "description": "Producto inexistente - devuelve 404."
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/productos (crear)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Galleta de Prueba\",\n  \"descripcion\": \"Creada desde Postman\",\n  \"precio\": 2500,\n  \"stock\": 10,\n  \"categoria\": { \"id\": 1 }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/productos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "productos"]
+            },
+            "description": "201 Created + header Location con la URL del nuevo producto."
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/productos/1 (actualizar)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Choco Chips Actualizada\",\n  \"descripcion\": \"Actualizada desde Postman\",\n  \"precio\": 2800,\n  \"stock\": 20,\n  \"categoria\": { \"id\": 1 }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/productos/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "productos", "1"]
+            },
+            "description": "200 OK con el producto actualizado, o 404 si no existe."
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /api/productos/{id} (eliminar)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/productos/7",
+              "host": ["{{base_url}}"],
+              "path": ["api", "productos", "7"]
+            },
+            "description": "204 No Content si se borro, 404 si no existia."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Despliegue cloud (Render.com)",
+      "description": "Mismas peticiones contra el server desplegado. Cambiar {{base_url}} en Variables.",
+      "item": [
+        {
+          "name": "GET / (en produccion)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/",
+              "host": ["{{base_url}}"],
+              "path": [""]
+            },
+            "description": "Probar la app desplegada en Render.com."
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/productos (en produccion)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/productos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "productos"]
+            },
+            "description": "API de productos en la app desplegada."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

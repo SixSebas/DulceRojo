@@ -44,7 +44,7 @@ public class SecurityConfig {
                                 .exceptionHandling(ex -> ex.accessDeniedPage("/403"))
                                 .authorizeHttpRequests(auth -> auth
                                                 .requestMatchers("/", "/productos", "/login", "/registro",
-                                                                "/css/**", "/js/**", "/images/**")
+                                                                "/css/**", "/js/**", "/images/**", "/api/**")
                                                 .permitAll()
                                                 .requestMatchers("/productos/nuevo", "/productos/*/editar",
                                                                 "/productos/*/eliminar")
