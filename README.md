@@ -108,3 +108,9 @@ El proyecto sigue la arquitectura MVC en capas estándar de Spring Boot:
 ## 📄 Curso
 SC-403 — Desarrollo de Aplicaciones Web y Patrones  
 Universidad Fidélitas — Costa Rica
+
+## Requisitos de ejecución
+
+- Java JDK 25
+- Maven Wrapper incluido en el proyecto
+- Visual Studio Code
