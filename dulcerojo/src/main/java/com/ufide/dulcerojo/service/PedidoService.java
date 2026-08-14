@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ufide.dulcerojo.entity.DetallePedido;
 import com.ufide.dulcerojo.entity.Pedido;
 import com.ufide.dulcerojo.repository.PedidoRepository;
 
@@ -14,6 +15,13 @@ public class PedidoService {
 
     @Autowired
     private PedidoRepository repo;
+
+    @Autowired
+    private com.ufide.dulcerojo.repository.DetallePedidoRepository detalleRepo;
+
+    public DetallePedido guardarDetalle(DetallePedido detalle) {
+        return detalleRepo.save(detalle);
+    }
 
     public List<Pedido> listar() {
         return repo.findAll();
@@ -30,4 +38,5 @@ public class PedidoService {
     public void eliminar(Long id) {
         repo.deleteById(id);
     }
+
 }
