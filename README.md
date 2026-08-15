@@ -1,6 +1,6 @@
 # 🍪 DulceRojo — Sistema de Pedidos en Línea
 
-Sistema web transaccional desarrollado con Spring Boot para gestionar el catálogo y pedidos del emprendimiento de repostería artesanal *Dulce Rojo*.
+Sistema web transaccional desarrollado con Spring Boot para gestionar el catálogo y pedidos del emprendimiento de repostería artesanal **Dulce Rojo**.
 
 ---
 
@@ -12,7 +12,7 @@ DulceRojo es un emprendimiento costarricense dedicado a la elaboración y venta 
 
 ## 🌐 Sistema en producción
 
-*URL pública:* https://dulcerojo.onrender.com
+**URL pública:** https://dulcerojo.onrender.com
 
 ---
 
@@ -55,7 +55,7 @@ DulceRojo es un emprendimiento costarricense dedicado a la elaboración y venta 
 - 🛒 Carrito de compras y módulo de pedidos
 - 📦 Control de stock al confirmar pedidos
 - 🌐 Internacionalización español/inglés
-- 🔌 API REST (/api/productos)
+- 🔌 API REST (`/api/productos`)
 - 📱 Diseño responsivo con Bootstrap 5
 
 ---
@@ -68,35 +68,35 @@ DulceRojo es un emprendimiento costarricense dedicado a la elaboración y venta 
 - Maven (incluido en el proyecto con mvnw)
 
 ### 1. Clonar el repositorio
-bash
+```bash
 git clone https://github.com/SixSebas/DulceRojo.git
 cd DulceRojo/dulcerojo
-
+```
 
 ### 2. Crear la base de datos
-sql
+```sql
 CREATE DATABASE dulcerojodb CHARACTER SET utf8mb4;
-
+```
 
 ### 3. Configurar la contraseña
-powershell
+```powershell
 setx DB_PASSWORD "tu_password_de_mysql"
-
+```
 Cerrá y abrí una terminal nueva para que tome efecto.
 
 ### 4. Arrancar la app
-powershell
+```powershell
 .\mvnw.cmd spring-boot:run
-
+```
 
 ### 5. Cargar datos de prueba
-Ejecutar seed-data.sql en MySQL Workbench.
+Ejecutar `seed-data.sql` en MySQL Workbench.
 
 ### 6. Crear usuario administrador
-Registrarse en /registro y luego ejecutar:
-sql
+Registrarse en `/registro` y luego ejecutar:
+```sql
 UPDATE usuarios SET rol = 'ADMIN' WHERE correo = 'tu@correo.com';
-
+```
 
 ### 7. Verificar
 - http://localhost:8080 — Página principal
@@ -108,9 +108,9 @@ UPDATE usuarios SET rol = 'ADMIN' WHERE correo = 'tu@correo.com';
 
 ## 🐳 Correr con Docker
 
-bash
+```bash
 docker-compose up --build
-
+```
 
 Esto levanta MySQL y la app automáticamente sin configurar nada.
 
@@ -119,12 +119,12 @@ Esto levanta MySQL y la app automáticamente sin configurar nada.
 ## 📁 Estructura del proyecto
 
 El proyecto sigue la arquitectura MVC en capas estándar de Spring Boot:
-- *controller/* — manejo de peticiones HTTP
-- *entity/* — modelos de datos con JPA
-- *repository/* — acceso a la base de datos
-- *service/* — lógica de negocio
-- *templates/* — vistas Thymeleaf con Bootstrap
-- *config/* — configuración de Spring Security e i18n
+- **controller/** — manejo de peticiones HTTP
+- **entity/** — modelos de datos con JPA
+- **repository/** — acceso a la base de datos
+- **service/** — lógica de negocio
+- **templates/** — vistas Thymeleaf con Bootstrap
+- **config/** — configuración de Spring Security e i18n
 
 ---
 
@@ -132,13 +132,13 @@ El proyecto sigue la arquitectura MVC en capas estándar de Spring Boot:
 
 | Método | Endpoint | Descripción |
 |---|---|---|
-| GET | /api/productos | Listar todos los productos |
-| GET | /api/productos/{id} | Ver detalle de un producto |
-| POST | /api/productos | Crear producto |
-| PUT | /api/productos/{id} | Actualizar producto |
-| DELETE | /api/productos/{id} | Eliminar producto |
+| GET | `/api/productos` | Listar todos los productos |
+| GET | `/api/productos/{id}` | Ver detalle de un producto |
+| POST | `/api/productos` | Crear producto |
+| PUT | `/api/productos/{id}` | Actualizar producto |
+| DELETE | `/api/productos/{id}` | Eliminar producto |
 
-Colección Postman disponible en postman-collection.json.
+Colección Postman disponible en `postman-collection.json`.
 
 ---
 
@@ -147,4 +147,12 @@ Colección Postman disponible en postman-collection.json.
 | Entregable | Semana | Estado |
 |---|---|---|
 | Avance 1 — Historias de Usuario y Prototipo | Semana 5 | ✅ Entregado |
-| Avance 2 — 50% del Proy…
+| Avance 2 — 50% del Proyecto | Semana 9 | ✅ Entregado |
+| Avance 3 — Informe IEEE | Semana 14 | ⏳ Pendiente |
+| Avance 4 — Entrega Final | Semana 14 | ⏳ Pendiente |
+
+---
+
+## 📄 Curso
+SC-403 — Desarrollo de Aplicaciones Web y Patrones  
+Universidad Fidélitas — Costa Rica
